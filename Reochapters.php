@@ -248,6 +248,38 @@ $(document).ready(function() {
 </script>
 <script>
 $(document).ready(function() {
+    var columnMappings = {
+    "srNo": "Sr. No",
+    "University": "University",
+    "Department": "Department",
+    "Faculty": "Faculty",
+    "Employee ID": "Employee ID",
+    "other Author": "Other Author",
+    "Type": "Type",
+    "Co-author": "Co-author",
+    "booktitle": "Book Title",
+    "region": "Region",
+    "pubdate": "Publication Date",
+    "pubyear": "Publication Year",
+    "volume": "Volume",
+    "pagefrom": "Page From",
+    "pageto": "Page To",
+    "scopus": "Scopus",
+    "listedin": "Listed In",
+    "wos": "Web of Science (WoS)",
+    "peer": "Peer Reviewed",
+    "issnisbn": "ISSN/ISBN",
+    "pubname": "Publisher Name",
+    "affltn": "Affiliation",
+    "corrauthor": "Corresponding Author",
+    "citind": "Citation Index",
+    "nocit": "Number of Citations",
+    "evdupload": "Evidence Upload",
+    "othrinfo": "Other Information",
+    "ref": "Reference",
+    "status": "Status"
+};
+
     // Handle row click event using event delegation
     $(document).on('click', '#papersTable tbody tr', function() {
         var rowData = $(this).data("row");
@@ -257,7 +289,8 @@ $(document).ready(function() {
 
             // Create table headers
             $.each(rowData, function(key) {
-                modalContent += '<th class="font-semibold px-4 py-2 text-left">' + key + '</th>';
+                var friendlyName = columnMappings[key] || key; // Fallback to key if no mapping found
+                modalContent += '<th class="font-semibold px-4 py-2 text-left">' + friendlyName + '</th>';
             });
 
             modalContent += '</tr></thead><tbody><tr>';
