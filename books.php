@@ -22,7 +22,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
     $listedin = isset($_POST['listedin']) ? $_POST['listedin'] : '';
     $wos = isset($_POST['wos']) ? $_POST['wos'] : '';
     $peer = isset($_POST['peer']) ? $_POST['peer'] : '';
-    $issn = isset($_POST['issn']) ? $_POST['issn'] : '';
+    $issnisbn = isset($_POST['issnisbn']) ? $_POST['issnisbn'] : '';
     $isbn = isset($_POST['isbn']) ? $_POST['isbn'] : '';
     $pubname = isset($_POST['pubname']) ? $_POST['pubname'] : '';
     $affltn = isset($_POST['affltn']) ? $_POST['affltn'] : '';
@@ -67,7 +67,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
         die("The connection to DB wasn't established ".mysqli_connect_error($conn));
     }
 
-	$sql="INSERT INTO `booksbyfaculty`(`University`, `Department`, `Faculty`, `Employee ID`, `other Author`,`Type`, `Co-author`, `booktitle`, `region`, `pubdate`, `pubyear`, `volume`, `pagefrom`, `pageto`, `scopus`, `listedin`, `wos`, `peer`, `issn`, `isbn`, `pubname`, `affltn`, `corrauthor`, `citind`, `nocit`, `evdupload`, `othrinfo`, `ref`) VALUES ('$uni', '$department', '$faculty', '$empid', '$author', '$firstAuthor','$coauthor', '$booktitle','$National', '$publicationdate', '$pubyear', '$edition', '$pagefrom', '$pageto', '$scopus', '$listedin', '$wos', '$peer','$issn', '$isbn', '$pubname', '$affltn', '$corrauthor', '$citind', '$nocit', '$destination', '$othrinfo', '$ref')";
+	$sql="INSERT INTO `booksbyfaculty`(`University`, `Department`, `Faculty`, `Employee ID`, `other Author`,`Type`, `Co-author`, `booktitle`, `region`, `pubdate`, `pubyear`, `volume`, `pagefrom`, `pageto`, `scopus`, `listedin`, `wos`, `peer`, `issnisbn`, `isbn`, `pubname`, `affltn`, `corrauthor`, `citind`, `nocit`, `evdupload`, `othrinfo`, `ref`) VALUES ('$uni', '$department', '$faculty', '$empid', '$author', '$firstAuthor','$coauthor', '$booktitle','$National', '$publicationdate', '$pubyear', '$edition', '$pagefrom', '$pageto', '$scopus', '$listedin', '$wos', '$peer','$issnisbn', '$isbn', '$pubname', '$affltn', '$corrauthor', '$citind', '$nocit', '$destination', '$othrinfo', '$ref')";
 
     
     $result=mysqli_query($conn,$sql);
@@ -325,10 +325,10 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 
 
 
-				<!-- ISSN -->
+				<!-- ISSN/ISBN -->
 				<div class="mb-4">
-					<label for="issn" class="block text-sm font-medium text-gray-700">ISSN<span class="text-red-500">*</span></label>
-					<input required type="text" name="issn" id="issn" placeholder="Enter ISSN" class="mt-1 w-full max-w-xs px-4 py-2 border rounded-md border-blue-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+					<label for="issnisbn" class="block text-sm font-medium text-gray-700">ISSN/ISBN<span class="text-red-500">*</span></label>
+					<input required type="text" name="issnisbn" id="issnisbn" placeholder="Enter ISSN/ISBN" class="mt-1 w-full max-w-xs px-4 py-2 border rounded-md border-blue-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
 				</div>
 				<!-- Citation Index -->
 				<div class="mb-4">

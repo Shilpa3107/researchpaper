@@ -168,8 +168,8 @@ include "common.php";
 					echo '<th class="px-4 py-2">Journal</th>';
 					echo '<th class="px-4 py-2">Conference</th>';
 					echo '<th class="px-4 py-2">Conference Paper</th>';
-					echo '<th class="px-4 py-2">ISSN</th>';
-					echo '<th class="px-4 py-2">ISBN</th>';
+					echo '<th class="px-4 py-2">ISSN/ISBN</th>';
+					
                     echo '<th class="px-4 py-2">Evidence Upload</th>';
 					echo '</tr>';
 					echo '</thead>';
@@ -202,8 +202,8 @@ include "common.php";
 						echo '<td class="border px-4 py-2">' . $row['journalname'] . '</td>';
 						echo '<td class="border px-4 py-2">' . $row['conferenceName'] . '</td>';
 						echo '<td class="border px-4 py-2">' . $row['conferencePaper'] . '</td>';
-						echo '<td class="border px-4 py-2">' . $row['issn'] . '</td>';
-						echo '<td class="border px-4 py-2">' . $row['isbn'] . '</td>';
+						echo '<td class="border px-4 py-2">' . $row['issnisbn'] . '</td>';
+						
                         echo '<td class="border px-4 py-2">
         <a href="download.php?file=' . urlencode($row['evdupload']) . '" class="text-blue-500 underline">Download</a>
       </td>';

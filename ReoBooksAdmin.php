@@ -149,8 +149,8 @@ include "connect.php";
                 echo '<th class="px-4 py-2">Author/s</th>';
                 echo '<th class="px-4 py-2">Other-author</th>';
                 echo '<th class="px-4 py-2">Chapter Title</th>';
-                echo '<th class="px-4 py-2">ISSN</th>';
-                echo '<th class="px-4 py-2">ISBN</th>';
+                echo '<th class="px-4 py-2">ISSN/ISBN</th>';
+                
                 echo '<th class="px-4 py-2">Evidence Upload</th>';
                 echo '</tr>';
                 echo '</thead>';
@@ -174,8 +174,8 @@ include "connect.php";
                           echo '<td class="border px-4 py-2">' . $row['other Author'] . '</td>';
                           echo '<td class="border px-4 py-2">' . $row['Co-author'] . '</td>';
                           echo '<td class="border px-4 py-2">' . $row['booktitle'] . '</td>';
-                          echo '<td class="border px-4 py-2">' . $row['issn'] . '</td>';
-                          echo '<td class="border px-4 py-2">' . $row['isbn'] . '</td>';
+                          echo '<td class="border px-4 py-2">' . $row['issnisbn'] . '</td>';
+                          
                           echo '<td class="border px-4 py-2">
                     <a href="download.php?file=' . urlencode($row['evdupload']) . '" class="text-blue-500 underline">Download</a>
                   </td>';

@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $listedin=$_POST['listedin'];
     $wos = isset($_POST['wos']) ? $_POST['wos'] : '';
     $peer = isset($_POST['peer']) ? $_POST['peer'] : '';
-    $issn = $_POST['issn'];
+    $issnisbn = $_POST['issnisbn'];
     $isbn = $_POST['isbn'];
     $pubname = $_POST['pubname'];
     $affltn = $_POST['affltn'];
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ref=$_POST['ref'];
 
     // SQL to update data in the database
-    $sql = "UPDATE researchpapersbyfaculty SET University='$university', Department='$department', Faculty='$faculty', `Employee ID`='$emp_id', `Author`='$otherauthor',`Type`=$firstAuthor, `Co-author`='$coauthor', papertitle='$papertitle',journalname='$journalname', article='$article', region='$region', pubdate='$publicationdate', pubyear='$pubyear', volume='$edition', pagefrom='$pagefrom', pageto='$pageto',impact='$impact', scopus='$scopus', listedin='$listedin', wos='$wos', peer='$peer', issn='$issn', isbn='$isbn', pubname='$pubname', affltn='$affltn', corrauthor='$corrauthor', citind='$citind', nocit='$nocit',evdupload='$destination', othrinfo='$othrinfo', ref='$ref' WHERE srNo='$id'";
+    $sql = "UPDATE researchpapersbyfaculty SET University='$university', Department='$department', Faculty='$faculty', `Employee ID`='$emp_id', `Author`='$otherauthor',`Type`=$firstAuthor, `Co-author`='$coauthor', papertitle='$papertitle',journalname='$journalname', article='$article', region='$region', pubdate='$publicationdate', pubyear='$pubyear', volume='$edition', pagefrom='$pagefrom', pageto='$pageto',impact='$impact', scopus='$scopus', listedin='$listedin', wos='$wos', peer='$peer', issnisbn='$issnisbn', isbn='$isbn', pubname='$pubname', affltn='$affltn', corrauthor='$corrauthor', citind='$citind', nocit='$nocit',evdupload='$destination', othrinfo='$othrinfo', ref='$ref' WHERE srNo='$id'";
 
     if ($conn->query($sql) === TRUE) {
         // Redirect to success page
@@ -255,10 +255,10 @@ $conn->close();
 					<input required type="text" name="pubname" id="publisher" value="<?php echo $row['pubname']; ?>" placeholder="Enter Name of Publisher" class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
 				</div>
 
-				<!-- ISSN -->
+				<!-- ISSN/ISBN -->
 				<div class="mb-4">
-					<label for="issn" class="block text-sm font-medium text-gray-700">ISSN<span class="text-red-500">*</span></label>
-					<input required type="text" name="issn" id="issn" value="<?php echo $row['issn']; ?>" placeholder="Enter ISSN" class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+					<label for="issnisbn" class="block text-sm font-medium text-gray-700">ISSN/ISBN<span class="text-red-500">*</span></label>
+					<input required type="text" name="issnisbn" id="issnisbn" value="<?php echo $row['issnisbn']; ?>" placeholder="Enter ISSN/ISBN" class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
 				</div>
 
 				<!-- Institutional Affiliations -->
