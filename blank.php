@@ -371,7 +371,7 @@ $conn->close();
 				<div class="mb-4 ">
 					<label for="listing" class="block text-sm font-medium text-gray-700">Listing<span class="text-red-500">*</span></label>
 					<select id="listing" name="listedin" class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-						<option value=""></option>
+						<option value="" disabled selected>Select Listing</option>
 						<option <?php if($row['listedin'] == 'UGC') echo 'selected'; ?>>UGC</option>
                         <option <?php if($row['listedin'] == 'PubMed') echo 'selected'; ?>>PubMed</option>
                         <option <?php if($row['listedin'] == 'ICI') echo 'selected'; ?>>ICI</option>

@@ -138,7 +138,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 			<div class="mb-4">
     <label for="Type" class="block text-sm font-medium text-gray-700">Type of Author<span class="text-red-500">*</span></label>
     <select required id="Type" name="firstAuthor" class="mt-1 w-full max-w-xs px-4 py-2 border rounded-md border-blue-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-        <option value=""></option>
+		<option value="" disabled selected>Select Author</option>
         <option value="First Author">First Author</option>
         <option value="Co-Author">Co-Author</option>
         <option value="Corresponding-Author">Corresponding-Author</option>
@@ -297,7 +297,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 				<div class="mb-4">
 					<label for="region" class="block text-sm font-medium text-gray-700">Region<span class="text-red-500">*</span></label>
 					<select id="region" name="National" class="mt-1 w-full max-w-sm px-4 py-2 border rounded-md border-blue-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-						<option value=""></option>
+						<option value="" disabled selected>Select region</option>
 						<option value="National">National</option>
 						<option value="International">International</option>
 					</select>
@@ -305,7 +305,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 				<div class="mb-4 ">
 					<label for="listing" class="block text-sm font-medium text-gray-700">Listing<span class="text-red-500">*</span></label>
 					<select id="listing" name="listedin" class="mt-1 w-full max-w-sm px-4 py-2 border rounded-md border-blue-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-						<option value=""></option>
+						<option value="" disabled selected>Select Listing</option>
 						<option value="UGC">UGC</option>
 						<option value="PubMed">PubMed</option>
 						<option value="ICI">ICI</option>

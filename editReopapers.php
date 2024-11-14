@@ -204,7 +204,7 @@ $conn->close();
         Type of Author<span class="text-red-500">*</span>
     </label>
     <select required id="Type" name="firstAuthor" class="mt-1 w-full max-w-xs px-4 py-2 border rounded-md border-blue-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-        <option value=""></option>
+        <option value="" disabled selected>Select Author</option>
         <option value="First Author" <?php if ($row['Type'] == 'First Author') echo 'selected'; ?>>First Author</option>
         <option value="Co-Author" <?php if ($row['Type'] == 'Co-Author') echo 'selected'; ?>>Co-Author</option>
         <option value="Corresponding-Author" <?php if ($row['Type'] == 'Corresponding-Author') echo 'selected'; ?>>Corresponding-Author</option>
@@ -434,15 +434,15 @@ $conn->close();
 				<div class="mb-4">
 					<label for="region" class="block text-sm font-medium text-gray-700">Region<span class="text-red-500">*</span></label>
 					<select id="region" name="National" class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-						<option value=""></option>
-						<option value="National" <?php if($row['region'] == 'National') echo 'selected'; ?>>National</option>
+												<option value="" disabled selected>Select region</option>
+						<option value="National">National</option> <?php if($row['region'] == 'National') echo 'selected'; ?>>National</option>
                         <option value="International" <?php if($row['region'] == 'International') echo 'selected'; ?>>International</option>
 					</select>
 				</div>
 				<div class="mb-4 ">
 					<label for="listing" class="block text-sm font-medium text-gray-700">Listing<span class="text-red-500">*</span></label>
 					<select id="listing" name="listedin" class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-						<option value=""></option>
+						<option value="" disabled selected>Select Listing</option>
 						<option <?php if($row['listedin'] == 'UGC') echo 'selected'; ?>>UGC</option>
                         <option <?php if($row['listedin'] == 'PubMed') echo 'selected'; ?>>PubMed</option>
                         <option <?php if($row['listedin'] == 'ICI') echo 'selected'; ?>>ICI</option>
