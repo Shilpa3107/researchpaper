@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $wos = isset($_POST['wos']) ? $_POST['wos'] : '';
     $peer = isset($_POST['peer']) ? $_POST['peer'] : '';
     $issnisbn = $_POST['issnisbn'];
-    $isbn = $_POST['isbn'];
+    
     $pubname = $_POST['pubname'];
     $affltn = $_POST['affltn'];
     $corrauthor = $_POST['corrauthor'];
@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ref=$_POST['ref'];
 
     // SQL to update data in the database
-    $sql = "UPDATE booksbyfaculty SET University='$university', Department='$department', Faculty='$faculty', `Employee ID`='$emp_id', `other Author`='$otherauthor', `Type`='$firstAuthor',`Co-author`='$coauthor', booktitle='$booktitle', region='$National', pubdate='$publicationdate', pubyear='$pubyear', volume='$edition', pagefrom='$pagefrom', pageto='$pageto', scopus='$scopus', listedin='$listedin', wos='$wos', peer='$peer', issnisbn='$issnisbn', isbn='$isbn', pubname='$pubname', affltn='$affltn', corrauthor='$corrauthor', citind='$citind', nocit='$nocit',evdupload='$destination', othrinfo='$othrinfo', ref='$ref' WHERE srNo='$id'";
+    $sql = "UPDATE booksbyfaculty SET University='$university', Department='$department', Faculty='$faculty', `Employee ID`='$emp_id', `other Author`='$otherauthor', `Type`='$firstAuthor',`Co-author`='$coauthor', booktitle='$booktitle', region='$National', pubdate='$publicationdate', pubyear='$pubyear', volume='$edition', pagefrom='$pagefrom', pageto='$pageto', scopus='$scopus', listedin='$listedin', wos='$wos', peer='$peer', issnisbn='$issnisbn', pubname='$pubname', affltn='$affltn', corrauthor='$corrauthor', citind='$citind', nocit='$nocit',evdupload='$destination', othrinfo='$othrinfo', ref='$ref' WHERE srNo='$id'";
 
     if ($conn->query($sql) === TRUE) {
         // Redirect to success page
