@@ -399,8 +399,8 @@ $conn->close();
 												<div class="widget-body">
 													<div class="widget-main">
 														<div>
-															<label for="volume-edition">Volume/Edition</label>
-															<input class="form-control" name="edition" type="number" id="volume-edition" value="<?php echo $row['volume']; ?>" placeholder="Enter Volume/Edition" />
+															<label for="volume-edition">Volume/Issue</label>
+															<input class="form-control" name="edition" type="number" id="volume-edition" value="<?php echo $row['volume']; ?>" placeholder="Enter Volume/Issue" />
 														</div>
 														<hr />
 														<div>

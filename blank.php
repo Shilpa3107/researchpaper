@@ -327,10 +327,10 @@ $conn->close();
 		<h4 class="text-lg font-semibold text-gray-900">Publication Details</h4>
 		<hr class="w-full max-w-xs mb-4">
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-				<!-- Volume/Edition -->
+				<!-- Volume/Issue -->
 				<div class="mb-4">
-					<label for="volume-edition" class="block text-sm font-medium text-gray-700">Volume/Edition<span class="text-red-500">*</span></label>
-					<input required type="number" name="edition" id="volume-edition" value="<?php echo $row['volume']; ?>" placeholder="Enter Volume/Edition" class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+					<label for="volume-edition" class="block text-sm font-medium text-gray-700">Volume/Issue<span class="text-red-500">*</span></label>
+					<input required type="number" name="edition" id="volume-edition" value="<?php echo $row['volume']; ?>" placeholder="Enter Volume/Issue" class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
 				</div>
 
 
