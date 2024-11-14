@@ -164,50 +164,69 @@ include "connect.php";
 
         <!-- Journal Papers Section -->
         <div class="mt-8">
-            <?php
-    		$sql = "SELECT * FROM researchpapersbyfaculty WHERE status=0";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-                echo "<h5 class='text-2xl font-medium font-serif mb-4'>Pending Journal Papers</h5>";
-                echo '<table class="w-full border border-gray-300 text-center bg-white rounded-lg shadow overflow-hidden">';
-                echo '<thead class="bg-gray-200"><tr><th class="py-2 px-4">Edit</th><th class="py-2 px-4">Delete</th><th class="py-2 px-4">Approve</th><th class="py-2 px-4">ID</th><th class="py-2 px-4">University</th><th class="py-2 px-4">Department</th><th class="py-2 px-4">Faculty/Scientist</th><th class="py-2 px-4">Type</th><th class="py-2 px-4">Employee ID</th><th class="py-2 px-4">Author/s</th><th class="py-2 px-4">Other-author</th><th class="py-2 px-4">Paper Title</th><th class="py-2 px-4">Journal</th><th class="py-2 px-4">Status</th></tr></thead>';
-                echo '<tbody>';
-                while ($row = $result->fetch_assoc()) {
-                    echo '<tr class="bg-white hover:bg-gray-50">';
-                    echo '<td class="py-2 px-4"><a href="editReoResearchpaperAdmin.php?id=' . $row['srNo'] . '" class="text-blue-500 hover:text-blue-700"><i class="fas fa-edit"></i></a></td>';
-                    echo '<td class="py-2 px-4">
-                          <form method="post" action="deleteReoResearchPaperAdmin.php">
-                              <input type="hidden" name="srNo" value="' . $row['srNo'] . '">
-                              <button type="submit" class="text-red-500 hover:text-red-700 font-semibold"><i class="fas fa-trash-alt"></i></button>
-                          </form>
-                          </td>';
-						  echo '<td>
-						  <form method="post">
-							  <input type="hidden" name="srNo" value="' . $row['srNo'] . '">
-							  <button type="submit" name="approve" onclick="return confirmApproval();" class="btn btn-sm text-black rounded hover:text-blue-700"><i class="fas fa-check"></i></button>
-						  </form>
-					  		</td>';
-                    echo '<td class="py-2 px-4">' . $row['srNo'] . '</td>';
-                    echo '<td class="py-2 px-4">' . $row['University'] . '</td>';
-                    echo '<td class="py-2 px-4">' . $row['Department'] . '</td>';
-                    echo '<td class="py-2 px-4">' . $row['Faculty'] . '</td>';
-                    echo '<td class="py-2 px-4">' . $row['Type'] . '</td>';
-                    echo '<td class="py-2 px-4">' . $row['Employee ID'] . '</td>';
-                    echo '<td class="py-2 px-4">' . $row['Author'] . '</td>';
-                    echo '<td class="py-2 px-4">' . $row['Co-author'] . '</td>';
-                    echo '<td class="py-2 px-4">' . $row['papertitle'] . '</td>';
-                    echo '<td class="py-2 px-4">' . $row['journalname'] . '</td>';
-                    if($row['status']==0){
+			<?php
+			$sql = "SELECT * FROM researchpapersbyfaculty WHERE status=0";
+			$result = $conn->query($sql);
+			if ($result->num_rows > 0) {
+				echo "<h5 class='text-2xl font-medium font-serif mb-4'>Pending Journal Papers</h5>";
+				echo '<table class="w-full border border-gray-300 text-center bg-white rounded-lg shadow overflow-hidden">';
+				echo '<thead class="bg-gray-200"><tr><th class="py-2 px-4">Edit</th><th class="py-2 px-4">Delete</th><th class="py-2 px-4">Approve</th><th class="py-2 px-4">Remarks</th><th class="py-2 px-4">ID</th><th class="py-2 px-4">University</th><th class="py-2 px-4">Department</th><th class="py-2 px-4">Faculty/Scientist</th><th class="py-2 px-4">Type</th><th class="py-2 px-4">Employee ID</th><th class="py-2 px-4">Author/s</th><th class="py-2 px-4">Other-author</th><th class="py-2 px-4">Paper Title</th><th class="py-2 px-4">Journal</th><th class="py-2 px-4">Status</th></tr></thead>';
+				echo '<tbody>';
+				while ($row = $result->fetch_assoc()) {
+					echo '<tr class="bg-white hover:bg-gray-50">';
+					echo '<td class="py-2 px-4"><a href="editReoResearchpaperAdmin.php?id=' . $row['srNo'] . '" class="text-blue-500 hover:text-blue-700"><i class="fas fa-edit"></i></a></td>';
+					echo '<td class="py-2 px-4">
+							<form method="post" action="deleteReoResearchPaperAdmin.php">
+								<input type="hidden" name="srNo" value="' . $row['srNo'] . '">
+								<button type="submit" class="text-red-500 hover:text-red-700 font-semibold"><i class="fas fa-trash-alt"></i></button>
+							</form>
+						</td>';
+					echo '<td>
+							<form method="post">
+								<input type="hidden" name="srNo" value="' . $row['srNo'] . '">
+								<button type="submit" name="approve" onclick="return confirmApproval();" class="btn btn-sm text-black rounded hover:text-blue-700"><i class="fas fa-check"></i></button>
+							</form>
+						</td>';
+					echo '<td class="py-2 px-4">
+							<button onclick="openModal(' . $row['srNo'] . ')" class="text-green-500 hover:text-green-700"><i class="fas fa-comment-dots"></i> Remarks</button>
+						</td>';
+					echo '<td class="py-2 px-4">' . $row['srNo'] . '</td>';
+					echo '<td class="py-2 px-4">' . $row['University'] . '</td>';
+					echo '<td class="py-2 px-4">' . $row['Department'] . '</td>';
+					echo '<td class="py-2 px-4">' . $row['Faculty'] . '</td>';
+					echo '<td class="py-2 px-4">' . $row['Type'] . '</td>';
+					echo '<td class="py-2 px-4">' . $row['Employee ID'] . '</td>';
+					echo '<td class="py-2 px-4">' . $row['Author'] . '</td>';
+					echo '<td class="py-2 px-4">' . $row['Co-author'] . '</td>';
+					echo '<td class="py-2 px-4">' . $row['papertitle'] . '</td>';
+					echo '<td class="py-2 px-4">' . $row['journalname'] . '</td>';
+					if($row['status'] == 0){
 						echo '<td>Not Approved</td>';
-						}
+					}
+					echo '</tr>';
+				}
+				echo '</tbody>';
+				echo '</table>';
+			}
+			?>
+		</div>
 
-                    echo '</tr>';
-                }
-                echo '</tbody>';
-                echo '</table>';
-            }
-            ?>
-        </div>
+<!-- Modal for Adding Remarks -->
+<div id="remarksModal" class="fixed inset-0 flex items-center justify-center bg-gray-200 bg-opacity-70 hidden">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-1/3">
+        <h3 class="text-lg font-semibold mb-4">Add Remarks</h3>
+
+        <form method="post" action="">
+            <input type="hidden" id="srNo" name="srNo">
+            <textarea name="remarks" rows="4" class="w-full border border-gray-300 rounded-lg p-2" placeholder="Enter remarks here..."></textarea>
+            <div class="flex justify-end mt-4">
+                <button type="button" onclick="closeModal()" class="px-4 py-2 bg-gray-300 rounded-lg mr-2">Cancel</button>
+                <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Send</button>
+            </div>
+        </form>
+
+    </div>
+</div>
 
         <!-- Chapters Section -->
         <div class="mt-8">
@@ -217,7 +236,7 @@ include "connect.php";
             if ($result->num_rows > 0) {
                 echo "<h5 class='text-2xl font-medium font-serif mb-4'>Pending Chapters</h5>";
                 echo '<table class="w-full border border-gray-300 text-center bg-white rounded-lg shadow overflow-hidden">';
-                echo '<thead class="bg-gray-200"><tr><th class="py-2 px-4">Edit</th><th class="py-2 px-4">Delete</th><th class="py-2 px-4">Approve</th><th class="py-2 px-4">ID</th><th class="py-2 px-4">University</th><th class="py-2 px-4">Department</th><th class="py-2 px-4">Faculty/Scientist</th><th class="py-2 px-4">Type</th><th class="py-2 px-4">Employee ID</th><th class="py-2 px-4">Author/s</th><th class="py-2 px-4">Other-author</th><th class="py-2 px-4">Chapter Title</th><th class="py-2 px-4">Status</th></tr></thead>';
+                echo '<thead class="bg-gray-200"><tr><th class="py-2 px-4">Edit</th><th class="py-2 px-4">Delete</th><th class="py-2 px-4">Approve</th><th class="py-2 px-4">Remarks</th><th class="py-2 px-4">ID</th><th class="py-2 px-4">University</th><th class="py-2 px-4">Department</th><th class="py-2 px-4">Faculty/Scientist</th><th class="py-2 px-4">Employee ID</th><th class="py-2 px-4">Author/s</th><th class="py-2 px-4">Other-author</th><th class="py-2 px-4">Chapter Title</th><th class="py-2 px-4">Status</th></tr></thead>';
                 echo '<tbody>';
                 while ($row = $result->fetch_assoc()) {
                     echo '<tr class="bg-white hover:bg-gray-50">';
@@ -234,11 +253,13 @@ include "connect.php";
 						  <button type="submit" name="approve1" onclick="return confirmApproval();" class="btn btn-sm text-black rounded hover:text-blue-700"><i class="fas fa-check"></i></button>
 					  </form>
 					  </td>';
+					  echo '<td class="py-2 px-4">
+							<button onclick="openModal(' . $row['srNo'] . ')" class="text-green-500 hover:text-green-700"><i class="fas fa-comment-dots"></i> Remarks</button>
+						</td>';
                     echo '<td class="py-2 px-4">' . $row['srNo'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['University'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['Department'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['Faculty'] . '</td>';
-                    echo '<td class="py-2 px-4">' . $row['Type'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['Employee ID'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['other Author'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['Co-author'] . '</td>';
@@ -258,7 +279,7 @@ include "connect.php";
             if ($result->num_rows > 0) {
                 echo "<h5 class='text-2xl font-medium font-serif mt-8 mb-4'>Conference Papers</h5>";
                 echo '<table class="w-full border border-gray-300 text-center bg-white rounded-lg shadow overflow-hidden">';
-                echo '<thead class="bg-gray-200"><tr><th class="py-2 px-4">Edit</th><th class="py-2 px-4">Delete</th><th class="py-2 px-4">Approve</th><th class="py-2 px-4">ID</th><th class="py-2 px-4">University</th><th class="py-2 px-4">Department</th><th class="py-2 px-4">Faculty/Scientist</th><th class="py-2 px-4">Type</th><th class="py-2 px-4">Employee ID</th><th class="py-2 px-4">Author/s</th><th class="py-2 px-4">Other-author</th><th class="py-2 px-4">Paper Title</th><th class="py-2 px-4">Journal</th><th class="py-2 px-4">Status</th></tr></thead>';
+                echo '<thead class="bg-gray-200"><tr><th class="py-2 px-4">Edit</th><th class="py-2 px-4">Delete</th><th class="py-2 px-4">Approve</th><th class="py-2 px-4">Remarks</th><th class="py-2 px-4">ID</th><th class="py-2 px-4">University</th><th class="py-2 px-4">Department</th><th class="py-2 px-4">Faculty/Scientist</th><th class="py-2 px-4">Type</th><th class="py-2 px-4">Employee ID</th><th class="py-2 px-4">Author/s</th><th class="py-2 px-4">Other-author</th><th class="py-2 px-4">Paper Title</th><th class="py-2 px-4">Journal</th><th class="py-2 px-4">Status</th></tr></thead>';
                 echo '<tbody>';
                 while ($row = $result->fetch_assoc()) {
                     echo '<tr class="bg-white hover:bg-gray-50">';
@@ -275,6 +296,9 @@ include "connect.php";
 							  <button type="submit" name="approve3" onclick="return confirmApproval();" class="btn btn-sm text-black rounded hover:text-blue-700"><i class="fas fa-check"></i></button>
 						  </form>
 					  </td>';
+					  echo '<td class="py-2 px-4">
+							<button onclick="openModal(' . $row['srNo'] . ')" class="text-green-500 hover:text-green-700"><i class="fas fa-comment-dots"></i> Remarks</button>
+						</td>';
                     echo '<td class="py-2 px-4">' . $row['srNo'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['University'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['Department'] . '</td>';
@@ -300,7 +324,7 @@ include "connect.php";
             if ($result->num_rows > 0) {
                 echo "<h5 class='text-2xl font-medium font-serif mt-8 mb-4'>Books</h5>";
                 echo '<table class="w-full border border-gray-300 text-center bg-white rounded-lg shadow overflow-hidden">';
-                echo '<thead class="bg-gray-200"><tr><th class="py-2 px-4">Edit</th><th class="py-2 px-4">Delete</th><th class="py-2 px-4">Approve</th><th class="py-2 px-4">ID</th><th class="py-2 px-4">University</th><th class="py-2 px-4">Department</th><th class="py-2 px-4">Faculty/Scientist</th><th class="py-2 px-4">Type</th><th class="py-2 px-4">Employee ID</th><th class="py-2 px-4">Author/s</th><th class="py-2 px-4">Other-author</th><th class="py-2 px-4">Book Title</th><th class="py-2 px-4">Status</th></tr></thead>';
+                echo '<thead class="bg-gray-200"><tr><th class="py-2 px-4">Edit</th><th class="py-2 px-4">Delete</th><th class="py-2 px-4">Approve</th><th class="py-2 px-4">Remarks</th><th class="py-2 px-4">ID</th><th class="py-2 px-4">University</th><th class="py-2 px-4">Department</th><th class="py-2 px-4">Faculty/Scientist</th><th class="py-2 px-4">Employee ID</th><th class="py-2 px-4">Author/s</th><th class="py-2 px-4">Other-author</th><th class="py-2 px-4">Book Title</th><th class="py-2 px-4">Status</th></tr></thead>';
                 echo '<tbody>';
                 while ($row = $result->fetch_assoc()) {
                     echo '<tr class="bg-white hover:bg-gray-50">';
@@ -317,11 +341,13 @@ include "connect.php";
 							  <button type="submit" name="approve2" onclick="return confirmApproval();" class="btn btn-sm text-black rounded hover:text-blue-700"><i class="fas fa-check"></i></button>
 						  </form>
 					  </td>';
+					  echo '<td class="py-2 px-4">
+							<button onclick="openModal(' . $row['srNo'] . ')" class="text-green-500 hover:text-green-700"><i class="fas fa-comment-dots"></i> Remarks</button>
+						</td>';
                     echo '<td class="py-2 px-4">' . $row['srNo'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['University'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['Department'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['Faculty'] . '</td>';
-                    echo '<td class="py-2 px-4">' . $row['Type'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['Employee ID'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['other Author'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['Co-author'] . '</td>';
@@ -638,6 +664,16 @@ include "footer.php"
     // Showing confirmation box
     return confirm("Are you sure you want to approve this?");
 	}
+</script>
+<script>
+function openModal(srNo) {
+    document.getElementById('srNo').value = srNo;
+    document.getElementById('remarksModal').classList.remove('hidden');
+}
+
+function closeModal() {
+    document.getElementById('remarksModal').classList.add('hidden');
+}
 </script>
 </body>
 </html>
