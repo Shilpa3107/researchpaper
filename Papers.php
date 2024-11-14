@@ -144,7 +144,7 @@ ini_set('display_errors', 1);
 			<div class="mb-4">
     <label for="Type" class="block text-sm font-medium text-gray-700">Type of Author<span class="text-red-500">*</span></label>
     <select required id="Type" name="firstAuthor" class="mt-1 w-full max-w-xs px-4 py-2 border rounded-md border-blue-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-        <option value=""></option>
+		<option value="" disabled selected>Select Author</option>
         <option value="First Author">First Author</option>
         <option value="Co-Author">Co-Author</option>
         <option value="Corresponding-Author">Corresponding-Author</option>
@@ -318,7 +318,7 @@ ini_set('display_errors', 1);
 			<div class="mb-4">
 					<label for="region" class="block text-sm font-medium text-gray-700">Region<span class="text-red-500">*</span></label>
 					<select id="region" name="National" class="mt-1 w-full max-w-sm px-4 py-2 border rounded-md border-blue-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-						<option value=""></option>
+						<option value="" disabled selected>Select region</option>
 						<option value="National">National</option>
 						<option value="International">International</option>
 					</select>
@@ -326,7 +326,7 @@ ini_set('display_errors', 1);
 				<div class="mb-4 ">
 					<label for="listing" class="block text-sm font-medium text-gray-700">Listing<span class="text-red-500">*</span></label>
 					<select id="listing" name="listedin" class="mt-1 w-full max-w-sm px-4 py-2 border rounded-md border-blue-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-						<option value=""></option>
+						<option value="" disabled selected>Select Listing</option>
 						<option value="UGC">UGC</option>
 						<option value="PubMed">PubMed</option>
 						<option value="ICI">ICI</option>
@@ -337,10 +337,10 @@ ini_set('display_errors', 1);
 		<h4 class="text-lg font-semibold text-gray-900">Publication Details</h4>
 		<hr class="w-full max-w-xs mb-4">
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-				<!-- Volume/Edition -->
+				<!-- Volume/Issue -->
 				<div class="mb-4">
-					<label for="volume-edition" class="block text-sm font-medium text-gray-700">Volume/Edition<span class="text-red-500">*</span></label>
-					<input required type="number" name="edition" id="volume-edition" placeholder="Enter Volume/Edition" class="mt-1 w-full max-w-xs px-4 py-2 border rounded-md border-blue-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+					<label for="volume-edition" class="block text-sm font-medium text-gray-700">Volume/Issue<span class="text-red-500">*</span></label>
+					<input required type="number" name="edition" id="volume-edition" placeholder="Enter Volume/Issue" class="mt-1 w-full max-w-xs px-4 py-2 border rounded-md border-blue-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
 				</div>
 
 
