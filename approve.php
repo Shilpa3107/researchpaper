@@ -147,8 +147,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $listedin=$_POST['listedin'];
     $wos = isset($_POST['wos']) ? $_POST['wos'] : '';
     $peer = isset($_POST['peer']) ? $_POST['peer'] : '';
-    $issn = $_POST['issn'];
-    $isbn = $_POST['isbn'];
+    $issnisbn = $_POST['issnisbn'];
+    
     $pubname = $_POST['pubname'];
     $affltn = $_POST['affltn'];
     $corrauthor = $_POST['corrauthor'];
@@ -182,7 +182,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ref=$_POST['ref'];
 
     // SQL to update data in the database
-    $sql = "UPDATE researchpapersbyfaculty SET University='$university', Department='$department', Faculty='$faculty', `Employee ID`='$emp_id', `Author`='$otherauthor', `Type`='$firstAuthor`,Co-author`='$coauthor', papertitle='$papertitle',journalname='$journalname', article='$article', region='$National', pubdate='$publicationdate', pubyear='$pubyear', volume='$edition', pagefrom='$pagefrom', pageto='$pageto',impact='$impact', scopus='$scopus', listedin='$listedin', wos='$wos', peer='$peer', issn='$issn', isbn='$isbn', pubname='$pubname', affltn='$affltn', corrauthor='$corrauthor', citind='$citind', nocit='$nocit',evdupload='$destination', othrinfo='$othrinfo', ref='$ref' WHERE srNo='$id'";
+    $sql = "UPDATE researchpapersbyfaculty SET University='$university', Department='$department', Faculty='$faculty', `Employee ID`='$emp_id', `Author`='$otherauthor', `Type`='$firstAuthor`,Co-author`='$coauthor', papertitle='$papertitle',journalname='$journalname', article='$article', region='$National', pubdate='$publicationdate', pubyear='$pubyear', volume='$edition', pagefrom='$pagefrom', pageto='$pageto',impact='$impact', scopus='$scopus', listedin='$listedin', wos='$wos', peer='$peer', issnisbn='$issnisbn', pubname='$pubname', affltn='$affltn', corrauthor='$corrauthor', citind='$citind', nocit='$nocit',evdupload='$destination', othrinfo='$othrinfo', ref='$ref' WHERE srNo='$id'";
 
     if ($conn->query($sql) === TRUE) {
         // Redirect to success page
@@ -404,13 +404,13 @@ $conn->close();
 														</div>
 														<hr />
 														<div>
-															<label for="issn">ISSN</label>
-															<input class="form-control" name="issn" type="text" id="issn" value="<?php echo $row['issn']; ?>" placeholder="Enter ISSN" />
+															<label for="issnisbn">ISSN/ISBN</label>
+															<input class="form-control" name="issnisbn" type="text" id="issnisbn" value="<?php echo $row['issnisbn']; ?>" placeholder="Enter ISSN/ISBN" />
 														</div>
 														<hr />
 														<div>
 															<label for="isbn">ISBN</label>
-															<input class="form-control" name="isbn" type="text" id="isbn" value="<?php echo $row['issn']; ?>" placeholder="Enter ISBN" />
+															<input class="form-control" name="isbn" type="text" id="isbn" value="<?php echo $row['issnisbn']; ?>" placeholder="Enter ISBN" />
 														</div>
 														<hr />
 														<div>

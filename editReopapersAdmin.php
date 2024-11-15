@@ -41,8 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $listedin=$_POST['listedin'];
     $wos = isset($_POST['wos']) ? $_POST['wos'] : '';
     $peer = isset($_POST['peer']) ? $_POST['peer'] : '';
-    $issn = $_POST['issn'];
-    $isbn = $_POST['isbn'];
+    $issnisbn = $_POST['issnisbn'];
+    
     $pubname = $_POST['pubname'];
     $affltn = $_POST['affltn'];
     $corrauthor = $_POST['corrauthor'];
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ref=$_POST['ref'];
 
     // SQL to update data in the database
-    $sql = "UPDATE papersbyfaculty SET University='$university', Department='$department', Faculty='$faculty', `Employee ID`='$emp_id', `other Author`='$otherauthor',`Type`='$firstAuthor', `Co-author`='$coauthor', booktitle='$booktitle',journalname='$journalname', region='$National',conferenceName='$conferenceName',conferencePaper='$conferencePaper', pubdate='$publicationdate', pubyear='$pubyear', volume='$edition', pagefrom='$pagefrom', pageto='$pageto', scopus='$scopus', listedin='$listedin', wos='$wos', peer='$peer', issn='$issn', isbn='$isbn', pubname='$pubname', affltn='$affltn', corrauthor='$corrauthor', citind='$citind', nocit='$nocit',evdupload='$destination', othrinfo='$othrinfo', ref='$ref' WHERE srNo='$id'";
+    $sql = "UPDATE papersbyfaculty SET University='$university', Department='$department', Faculty='$faculty', `Employee ID`='$emp_id', `other Author`='$otherauthor',`Type`='$firstAuthor', `Co-author`='$coauthor', booktitle='$booktitle',journalname='$journalname', region='$National',conferenceName='$conferenceName',conferencePaper='$conferencePaper', pubdate='$publicationdate', pubyear='$pubyear', volume='$edition', pagefrom='$pagefrom', pageto='$pageto', scopus='$scopus', listedin='$listedin', wos='$wos', peer='$peer', issnisbn='$issnisbn', pubname='$pubname', affltn='$affltn', corrauthor='$corrauthor', citind='$citind', nocit='$nocit',evdupload='$destination', othrinfo='$othrinfo', ref='$ref' WHERE srNo='$id'";
 
     if ($conn->query($sql) === TRUE) {
         // Redirect to success page
@@ -399,10 +399,10 @@ $conn->close();
 
 
 
-				<!-- ISSN -->
+				<!-- ISSN/ISBN -->
 				<div class="mb-4">
-					<label for="issn" class="block text-sm font-medium text-gray-700">ISSN<span class="text-red-500">*</span></label>
-					<input required type="text" name="issn" id="issn" value="<?php echo $row['issn']; ?>" placeholder="Enter ISSN" class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+					<label for="issnisbn" class="block text-sm font-medium text-gray-700">ISSN/ISBN<span class="text-red-500">*</span></label>
+					<input required type="text" name="issnisbn" id="issnisbn" value="<?php echo $row['issnisbn']; ?>" placeholder="Enter ISSN/ISBN" class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
 				</div>
 				<!-- Citation Index -->
 				<div class="mb-4">
@@ -411,11 +411,7 @@ $conn->close();
 				</div>
 
 
-				<!-- ISBN -->
-				<div class="mb-4">
-					<label for="isbn" class="block text-sm font-medium text-gray-700">ISBN<span class="text-red-500">*</span></label>
-					<input required type="text" name="isbn" id="isbn" value="<?php echo $row['isbn']; ?>" placeholder="Enter ISBN" class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
-				</div>
+				
 				<!-- Number of Citations -->
 				<div class="mb-4">
 					<label for="num-citations" class="block text-sm font-medium text-gray-700">Number of Citations<span class="text-red-500">*</span></label>

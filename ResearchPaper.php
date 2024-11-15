@@ -27,8 +27,8 @@
 				$listedin = isset($_POST['listedin']) ? $_POST['listedin'] : '';
 				$wos = isset($_POST['wos']) ? $_POST['wos'] : '';
 				$peer = isset($_POST['peer']) ? $_POST['peer'] : '';
-				$issn = isset($_POST['issn']) ? $_POST['issn'] : '';
-				$isbn = isset($_POST['isbn']) ? $_POST['isbn'] : '';
+				$issnisbn = isset($_POST['issnisbn']) ? $_POST['issnisbn'] : '';
+				
 				$pubname = isset($_POST['pubname']) ? $_POST['pubname'] : '';
 				$affltn = isset($_POST['affltn']) ? $_POST['affltn'] : '';
 				$corrauthor = isset($_POST['corrauthor']) ? $_POST['corrauthor'] : '';
@@ -73,8 +73,8 @@
 				}
 
 				$sql = "INSERT INTO researchpapersbyfaculty 
-    (`University`, `Department`, `Faculty`, `Employee ID`, `Author`, `Type`,`Co-author`, `papertitle`, `journalname`, `article`, `region`, `pubdate`, `pubyear`, `volume`, `pagefrom`, `pageto`, `impact`, `scopus`, `listedin`, `wos`, `peer`, `issn`, `isbn`, `pubname`, `affltn`, `corrauthor`, `citind`, `nocit`, `link`, `evdupload`, `othrinfo`, `ref`) 
-    VALUES ('$uni', '$department', '$faculty', '$empid', '$author','$firstAuthor', '$coauthor', '$booktitle', '$journalname', '$article', '$National', '$publicationdate', '$pubyear', '$edition', '$pagefrom', '$pageto', '$impact', '$scopus', '$listedin', '$wos', '$peer', '$issn', '$isbn', '$pubname', '$affltn', '$corrauthor', '$citind', '$nocit', '$link', '$destination', '$othrinfo', '$ref')";
+    (`University`, `Department`, `Faculty`, `Employee ID`, `Author`, `Type`,`Co-author`, `papertitle`, `journalname`, `article`, `region`, `pubdate`, `pubyear`, `volume`, `pagefrom`, `pageto`, `impact`, `scopus`, `listedin`, `wos`, `peer`, `issnisbn`, , `pubname`, `affltn`, `corrauthor`, `citind`, `nocit`, `link`, `evdupload`, `othrinfo`, `ref`) 
+    VALUES ('$uni', '$department', '$faculty', '$empid', '$author','$firstAuthor', '$coauthor', '$booktitle', '$journalname', '$article', '$National', '$publicationdate', '$pubyear', '$edition', '$pagefrom', '$pageto', '$impact', '$scopus', '$listedin', '$wos', '$peer', '$issnisbn', '$isbn', '$pubname', '$affltn', '$corrauthor', '$citind', '$nocit', '$link', '$destination', '$othrinfo', '$ref')";
 
 				$result=mysqli_query($conn,$sql);
 				if($result) {
@@ -198,10 +198,10 @@
 					<input required type="text" name="pubname" id="publisher" placeholder="Enter Name of Publisher" class="mt-1 w-full max-w-sm px-4 py-2 border rounded-md border-blue-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
 				</div>
 
-				<!-- ISSN -->
+				<!-- ISSN/ISBN -->
 				<div class="mb-4">
-					<label for="issn" class="block text-sm font-medium text-gray-700">ISSN<span class="text-red-500">*</span></label>
-					<input required type="text" name="issn" id="issn" placeholder="Enter ISSN" class="mt-1 w-full max-w-xs px-4 py-2 border rounded-md border-blue-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+					<label for="issnisbn" class="block text-sm font-medium text-gray-700">ISSN/ISBN<span class="text-red-500">*</span></label>
+					<input required type="text" name="issnisbn" id="issnisbn" placeholder="Enter ISSN/ISBN" class="mt-1 w-full max-w-xs px-4 py-2 border rounded-md border-blue-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
 				</div>
 
 				<!-- Institutional Affiliations -->
@@ -210,11 +210,7 @@
 					<input required type="text" name="affltn" id="institutional-affiliations" placeholder="Enter Institutional Affiliations" class="mt-1 w-full max-w-sm px-4 py-2 border rounded-md border-blue-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
 				</div>
 
-				<!-- ISBN -->
-				<div class="mb-4">
-					<label for="isbn" class="block text-sm font-medium text-gray-700">ISBN<span class="text-red-500">*</span></label>
-					<input required type="text" name="isbn" id="isbn" placeholder="Enter ISBN" class="mt-1 w-full max-w-xs px-4 py-2 border rounded-md border-blue-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
-				</div>
+				
 
 				<!-- Corresponding Author -->
 				<div class="mb-4">
