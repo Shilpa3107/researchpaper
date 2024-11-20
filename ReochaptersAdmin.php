@@ -144,7 +144,7 @@ include "connect.php";
                 echo '<th class="px-4 py-2">University</th>';
                 echo '<th class="px-4 py-2">Department</th>';
                 echo '<th class="px-4 py-2">Faculty/Scientist</th>';
-                echo '<th class="px-4 py-2">Type</th>';
+                echo '<th class="px-4 py-2">Author Type</th>';
                 echo '<th class="px-4 py-2">Employee ID</th>';
                 echo '<th class="px-4 py-2">Author/s</th>';
                 echo '<th class="px-4 py-2">Other-author</th>';

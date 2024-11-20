@@ -170,7 +170,7 @@ include "connect.php";
 			if ($result->num_rows > 0) {
 				echo "<h5 class='text-2xl font-medium font-serif mb-4'>Pending Journal Papers</h5>";
 				echo '<table class="w-full border border-gray-300 text-center bg-white rounded-lg shadow overflow-hidden">';
-				echo '<thead class="bg-gray-200"><tr><th class="py-2 px-4">Edit</th><th class="py-2 px-4">Delete</th><th class="py-2 px-4">Approve</th><th class="py-2 px-4">Remarks</th><th class="py-2 px-4">ID</th><th class="py-2 px-4">University</th><th class="py-2 px-4">Department</th><th class="py-2 px-4">Faculty/Scientist</th><th class="py-2 px-4">Type</th><th class="py-2 px-4">Employee ID</th><th class="py-2 px-4">Author/s</th><th class="py-2 px-4">Other-author</th><th class="py-2 px-4">Paper Title</th><th class="py-2 px-4">Journal</th><th class="py-2 px-4">Status</th></tr></thead>';
+				echo '<thead class="bg-gray-200"><tr><th class="py-2 px-4">Edit</th><th class="py-2 px-4">Delete</th><th class="py-2 px-4">Approve</th><th class="py-2 px-4">Remarks</th><th class="py-2 px-4">ID</th><th class="py-2 px-4">University</th><th class="py-2 px-4">Department</th><th class="py-2 px-4">Faculty/Scientist</th><th class="py-2 px-4">Author Type</th><th class="py-2 px-4">Employee ID</th><th class="py-2 px-4">Author/s</th><th class="py-2 px-4">Other-author</th><th class="py-2 px-4">Paper Title</th><th class="py-2 px-4">Journal</th><th class="py-2 px-4">Status</th></tr></thead>';
 				echo '<tbody>';
 				while ($row = $result->fetch_assoc()) {
 					echo '<tr class="bg-white hover:bg-gray-50">';
@@ -236,7 +236,7 @@ include "connect.php";
             if ($result->num_rows > 0) {
                 echo "<h5 class='text-2xl font-medium font-serif mb-4'>Pending Chapters</h5>";
                 echo '<table class="w-full border border-gray-300 text-center bg-white rounded-lg shadow overflow-hidden">';
-                echo '<thead class="bg-gray-200"><tr><th class="py-2 px-4">Edit</th><th class="py-2 px-4">Delete</th><th class="py-2 px-4">Approve</th><th class="py-2 px-4">Remarks</th><th class="py-2 px-4">ID</th><th class="py-2 px-4">University</th><th class="py-2 px-4">Department</th><th class="py-2 px-4">Faculty/Scientist</th><th class="py-2 px-4">Employee ID</th><th class="py-2 px-4">Author/s</th><th class="py-2 px-4">Other-author</th><th class="py-2 px-4">Chapter Title</th><th class="py-2 px-4">Status</th></tr></thead>';
+                echo '<thead class="bg-gray-200"><tr><th class="py-2 px-4">Edit</th><th class="py-2 px-4">Delete</th><th class="py-2 px-4">Approve</th><th class="py-2 px-4">Remarks</th><th class="py-2 px-4">ID</th><th class="py-2 px-4">University</th><th class="py-2 px-4">Department</th><th class="py-2 px-4">Faculty/Scientist</th><th class="py-2 px-4">Author Type</th><th class="py-2 px-4">Employee ID</th><th class="py-2 px-4">Author/s</th><th class="py-2 px-4">Other-author</th><th class="py-2 px-4">Chapter Title</th><th class="py-2 px-4">Status</th></tr></thead>';
                 echo '<tbody>';
                 while ($row = $result->fetch_assoc()) {
                     echo '<tr class="bg-white hover:bg-gray-50">';
@@ -260,6 +260,7 @@ include "connect.php";
                     echo '<td class="py-2 px-4">' . $row['University'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['Department'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['Faculty'] . '</td>';
+                    echo '<td class="py-2 px-4">' . $row['Type'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['Employee ID'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['other Author'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['Co-author'] . '</td>';
@@ -279,7 +280,7 @@ include "connect.php";
             if ($result->num_rows > 0) {
                 echo "<h5 class='text-2xl font-medium font-serif mt-8 mb-4'>Conference Papers</h5>";
                 echo '<table class="w-full border border-gray-300 text-center bg-white rounded-lg shadow overflow-hidden">';
-                echo '<thead class="bg-gray-200"><tr><th class="py-2 px-4">Edit</th><th class="py-2 px-4">Delete</th><th class="py-2 px-4">Approve</th><th class="py-2 px-4">Remarks</th><th class="py-2 px-4">ID</th><th class="py-2 px-4">University</th><th class="py-2 px-4">Department</th><th class="py-2 px-4">Faculty/Scientist</th><th class="py-2 px-4">Type</th><th class="py-2 px-4">Employee ID</th><th class="py-2 px-4">Author/s</th><th class="py-2 px-4">Other-author</th><th class="py-2 px-4">Paper Title</th><th class="py-2 px-4">Journal</th><th class="py-2 px-4">Status</th></tr></thead>';
+                echo '<thead class="bg-gray-200"><tr><th class="py-2 px-4">Edit</th><th class="py-2 px-4">Delete</th><th class="py-2 px-4">Approve</th><th class="py-2 px-4">Remarks</th><th class="py-2 px-4">ID</th><th class="py-2 px-4">University</th><th class="py-2 px-4">Department</th><th class="py-2 px-4">Faculty/Scientist</th><th class="py-2 px-4">Author Type</th><th class="py-2 px-4">Employee ID</th><th class="py-2 px-4">Author/s</th><th class="py-2 px-4">Other-author</th><th class="py-2 px-4">Paper Title</th><th class="py-2 px-4">Journal</th><th class="py-2 px-4">Status</th></tr></thead>';
                 echo '<tbody>';
                 while ($row = $result->fetch_assoc()) {
                     echo '<tr class="bg-white hover:bg-gray-50">';
@@ -324,7 +325,7 @@ include "connect.php";
             if ($result->num_rows > 0) {
                 echo "<h5 class='text-2xl font-medium font-serif mt-8 mb-4'>Books</h5>";
                 echo '<table class="w-full border border-gray-300 text-center bg-white rounded-lg shadow overflow-hidden">';
-                echo '<thead class="bg-gray-200"><tr><th class="py-2 px-4">Edit</th><th class="py-2 px-4">Delete</th><th class="py-2 px-4">Approve</th><th class="py-2 px-4">Remarks</th><th class="py-2 px-4">ID</th><th class="py-2 px-4">University</th><th class="py-2 px-4">Department</th><th class="py-2 px-4">Faculty/Scientist</th><th class="py-2 px-4">Employee ID</th><th class="py-2 px-4">Author/s</th><th class="py-2 px-4">Other-author</th><th class="py-2 px-4">Book Title</th><th class="py-2 px-4">Status</th></tr></thead>';
+                echo '<thead class="bg-gray-200"><tr><th class="py-2 px-4">Edit</th><th class="py-2 px-4">Delete</th><th class="py-2 px-4">Approve</th><th class="py-2 px-4">Remarks</th><th class="py-2 px-4">ID</th><th class="py-2 px-4">University</th><th class="py-2 px-4">Department</th><th class="py-2 px-4">Faculty/Scientist</th><th class="py-2 px-4">Author Type</th><th class="py-2 px-4">Employee ID</th><th class="py-2 px-4">Author/s</th><th class="py-2 px-4">Other-author</th><th class="py-2 px-4">Book Title</th><th class="py-2 px-4">Status</th></tr></thead>';
                 echo '<tbody>';
                 while ($row = $result->fetch_assoc()) {
                     echo '<tr class="bg-white hover:bg-gray-50">';
@@ -348,6 +349,7 @@ include "connect.php";
                     echo '<td class="py-2 px-4">' . $row['University'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['Department'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['Faculty'] . '</td>';
+                    echo '<td class="py-2 px-4">' . $row['Type'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['Employee ID'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['other Author'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['Co-author'] . '</td>';
@@ -365,6 +367,7 @@ include "connect.php";
     </div>
 </div>
 </div>
+
 <?php
 if (isset($_POST['approve'])) {
     // Ensure srNo is set and is numeric to avoid SQL injection

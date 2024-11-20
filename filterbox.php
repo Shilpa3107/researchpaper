@@ -113,17 +113,24 @@ include 'common.php'
             'papertitle' => 'Title'
         ]
     ];
+    $tableDisplayNames = [
+        'bookchaptersbyfaculty' => 'Book Chapters',
+        'booksbyfaculty' => 'Books',
+        'papersbyfaculty' => 'Papers',
+        'researchpapersbyfaculty' => 'Research Papers'
+    ];
+    
 
     $hasResults = false;
 
-    function displayTable($conn, $tableName, $columns, $conditions, $columnMappings) {
+    function displayTable($conn, $tableName, $columns, $conditions, $columnMappings, $tableDisplayNames) {
         global $hasResults;
         $existingColumns = [];
         $result = $conn->query("SHOW COLUMNS FROM $tableName");
         while ($row = $result->fetch_assoc()) {
             $existingColumns[] = $row['Field'];
         }
-
+    
         $sql = "SELECT * FROM $tableName WHERE 1=1";
         foreach ($conditions as $column => $value) {
             if (isset($value) && $value !== '' && in_array($column, $existingColumns)) {
@@ -137,25 +144,27 @@ include 'common.php'
                 }
             }
         }
-
+    
         $result = $conn->query($sql);
-
+    
         if ($result->num_rows > 0) {
             $hasResults = true;
             echo "<div class='table-container'>";
-            echo "<h3>" . ucfirst($tableName) . "</h3>"; 
+            // Use the custom table name if it exists
+            $displayName = isset($tableDisplayNames[$tableName]) ? $tableDisplayNames[$tableName] : ucfirst($tableName);
+            echo "<h3>" . htmlspecialchars($displayName) . "</h3>";
             echo "<table class='styled-table'>";
             echo "<tr>";
             foreach ($columns as $column) {
                 $displayName = isset($columnMappings[$tableName][$column]) ? $columnMappings[$tableName][$column] : $column;
-                echo "<th>$displayName</th>";
+                echo "<th>" . htmlspecialchars($displayName) . "</th>";
             }
             echo "</tr>";
-
+    
             while($row = $result->fetch_assoc()) {
                 echo "<tr>";
                 foreach ($columns as $column) {
-                    echo "<td>" . (isset($row[$column]) ? $row[$column] : '') . "</td>";
+                    echo "<td>" . htmlspecialchars(isset($row[$column]) ? $row[$column] : '') . "</td>";
                 }
                 echo "</tr>";
             }
@@ -163,6 +172,7 @@ include 'common.php'
             echo "</div>";
         }
     }
+    
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $author = isset($_POST['author']) ? trim($_POST['author']) : '';
@@ -179,8 +189,9 @@ include 'common.php'
                     'booktitle' => $title,
                     'papertitle' => $title
                 ];
-                displayTable($conn, $tableName, array_keys($columns), $conditions, $columnMappings);
+                displayTable($conn, $tableName, array_keys($columns), $conditions, $columnMappings, $tableDisplayNames);
             }
+            
     
             if (!$hasResults) {
                 echo "<script>showAlert('No results found.');</script>";
