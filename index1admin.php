@@ -188,7 +188,7 @@ include "connect.php";
 							</form>
 						</td>';
 					echo '<td class="py-2 px-4">
-							<button onclick="openModal(' . $row['srNo'] . ')" class="text-green-500 hover:text-green-700"><i class="fas fa-comment-dots"></i> Remarks</button>
+		<button onclick="openModal('<?= $row['srNo']; ?>', 'researchpapers_remarks.php')" class="text-green-500 hover:text-green-700"><i class="fas fa-comment-dots"></i> Remarks</button>
 						</td>';
 					echo '<td class="py-2 px-4">' . $row['srNo'] . '</td>';
 					echo '<td class="py-2 px-4">' . $row['University'] . '</td>';
@@ -216,17 +216,19 @@ include "connect.php";
     <div class="bg-white p-6 rounded-lg shadow-lg w-1/3">
         <h3 class="text-lg font-semibold mb-4">Add Remarks</h3>
 
-        <form method="post" action="">
-            <input type="hidden" id="srNo" name="srNo">
-            <textarea name="remarks" rows="4" class="w-full border border-gray-300 rounded-lg p-2" placeholder="Enter remarks here..."></textarea>
-            <div class="flex justify-end mt-4">
-                <button type="button" onclick="closeModal()" class="px-4 py-2 bg-gray-300 rounded-lg mr-2">Cancel</button>
-                <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Send</button>
-            </div>
-        </form>
+        <!-- Unified Form -->
+        <form id="remarksForm" method="post">
+    <input type="hidden" id="srNo" name="srNo"> <!-- Hidden input for srNo -->
+    <textarea name="remarks" rows="4" class="w-full border border-gray-300 rounded-lg p-2" placeholder="Enter remarks here..."></textarea>
+    <div class="flex justify-end mt-4">
+        <button type="button" onclick="closeModal()" class="px-4 py-2 bg-gray-300 rounded-lg mr-2">Cancel</button>
+        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Send</button>
+    </div>
+</form>
 
     </div>
 </div>
+
 
         <!-- Chapters Section -->
         <div class="mt-8">
@@ -254,7 +256,7 @@ include "connect.php";
 					  </form>
 					  </td>';
 					  echo '<td class="py-2 px-4">
-							<button onclick="openModal(' . $row['srNo'] . ')" class="text-green-500 hover:text-green-700"><i class="fas fa-comment-dots"></i> Remarks</button>
+							<button onclick="openModal('<?= $row['srNo']; ?>', 'bookchapters_remarks.php')" class="text-green-500 hover:text-green-700"><i class="fas fa-comment-dots"></i> Remarks</button>
 						</td>';
                     echo '<td class="py-2 px-4">' . $row['srNo'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['University'] . '</td>';
@@ -298,7 +300,7 @@ include "connect.php";
 						  </form>
 					  </td>';
 					  echo '<td class="py-2 px-4">
-							<button onclick="openModal(' . $row['srNo'] . ')" class="text-green-500 hover:text-green-700"><i class="fas fa-comment-dots"></i> Remarks</button>
+							<button onclick="openModal('<?= $row['srNo']; ?>', 'papers_remarks.php')" class="text-green-500 hover:text-green-700"><i class="fas fa-comment-dots"></i> Remarks</button>
 						</td>';
                     echo '<td class="py-2 px-4">' . $row['srNo'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['University'] . '</td>';
@@ -343,7 +345,7 @@ include "connect.php";
 						  </form>
 					  </td>';
 					  echo '<td class="py-2 px-4">
-							<button onclick="openModal(' . $row['srNo'] . ')" class="text-green-500 hover:text-green-700"><i class="fas fa-comment-dots"></i> Remarks</button>
+							<button onclick="openModal('<?= $row['srNo']; ?>', 'books_remarks.php')" class="text-green-500 hover:text-green-700"><i class="fas fa-comment-dots"></i> Remarks</button>
 						</td>';
                     echo '<td class="py-2 px-4">' . $row['srNo'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['University'] . '</td>';
@@ -659,9 +661,11 @@ if (isset($_POST['approve3'])) {
 }
 
 ?>
+
 <?php
 include "footer.php"
 ?>
+c
 <script>
 	function confirmApproval() {
     // Showing confirmation box
@@ -671,6 +675,7 @@ include "footer.php"
 <script>
 function openModal(srNo) {
     document.getElementById('srNo').value = srNo;
+    remarksForm.action = formAction;
     document.getElementById('remarksModal').classList.remove('hidden');
 }
 
