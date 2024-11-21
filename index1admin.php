@@ -188,7 +188,7 @@ include "connect.php";
 							</form>
 						</td>';
 					echo '<td class="py-2 px-4">
-		<button onclick="openModal('<?= $row['srNo']; ?>', 'researchpapers_remarks.php')" class="text-green-500 hover:text-green-700"><i class="fas fa-comment-dots"></i> Remarks</button>
+		<button onclick="openModal('<? $row['srNo']; ?>', 'researchpapers_remarks.php')" class="text-green-500 hover:text-green-700"><i class="fas fa-comment-dots"></i> Remarks</button>
 						</td>';
 					echo '<td class="py-2 px-4">' . $row['srNo'] . '</td>';
 					echo '<td class="py-2 px-4">' . $row['University'] . '</td>';
@@ -256,7 +256,7 @@ include "connect.php";
 					  </form>
 					  </td>';
 					  echo '<td class="py-2 px-4">
-							<button onclick="openModal('<?= $row['srNo']; ?>', 'bookchapters_remarks.php')" class="text-green-500 hover:text-green-700"><i class="fas fa-comment-dots"></i> Remarks</button>
+							<button onclick="openModal('<? $row['srNo']; ?>', 'bookchapters_remarks.php')" class="text-green-500 hover:text-green-700"><i class="fas fa-comment-dots"></i> Remarks</button>
 						</td>';
                     echo '<td class="py-2 px-4">' . $row['srNo'] . '</td>';
                     echo '<td class="py-2 px-4">' . $row['University'] . '</td>';
